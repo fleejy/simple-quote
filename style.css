@@ -1,0 +1,43 @@
+body{background-color: rgb(188, 219, 189);  margin:auto;}
+h2{background-color: rgb(188, 219, 189); color:#ffffff;
+padding:10px;
+font-family: arial;
+text-align: center;}
+
+.btn{height:50px; width:150px;
+font-size: 18px;
+color:#ffffff;
+background-color: rgb(163, 182, 201);
+border:none;
+padding:5px;
+border-radius: 5px;}
+
+.card{padding:15px 30px 15px 30px;
+margin:40px auto;
+max-width:700px;
+max-height:500px;
+text-align: center;
+background-color: #ffffff;
+border-radius: 5px;
+}
+
+.footer{
+    margin:40px auto;
+    border-radius: 5px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.footer p{
+    text-shadow: 0.5px 1px #171717; 
+}
+
+p{font-family:'Segoe UI';
+font-weight:400;
+font-size: 20px;}
+
+img{height:25px;
+width:25px;
+}
