@@ -21,7 +21,7 @@ jobs:
         enabled: true
     working_directory: ~/simple-quote
     environment:
-      HEROKU_APP: "$HEROKU_APP_NAME"
+      HEROKU_APP: "simple-quotez"
     steps:
       # Get code from git
       - checkout
