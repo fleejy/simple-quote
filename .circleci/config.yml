@@ -3,7 +3,7 @@ version: 2.1
 
 # Orchestrate or schedule a set of jobs
 jobs:
-  test-unit:
+  build:
     docker:
       - image: circleci/node:10
     working_directory: ~/simple-quote
