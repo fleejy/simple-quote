@@ -6,6 +6,7 @@ jobs:
   test-unit:
     docker:
       - image: circleci/node:10
+    working_directory: ~/simple-quote
     steps:
       # Get code from git
       - checkout
@@ -16,17 +17,24 @@ jobs:
           name: Run Tests
           command: yarn test
   deploy:
-    docker:
-      - image: circleci/node:10
+    machine:
+        enabled: true
+    working_directory: ~/simple-quote
+    environment:
+      HEROKU_APP: "$HEROKU_APP_NAME"
     steps:
       # Get code from git
       - checkout
-      # Make sure we are up to date with the package.json dependencies
+      - run:
+          name: Setup Heroku
+          command: bash .circleci/setup-heroku.sh
       - run:
           name: Deploy main to Heroku
           command: |
-            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git main
-            yarn start
+            git push heroku sequential-branch-filter:main
+            heroku run yarn install
+            sleep 5
+            heroku restart
 workflows:
   version: 2
   build-deploy:
