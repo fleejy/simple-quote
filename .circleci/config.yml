@@ -15,18 +15,6 @@ jobs:
       - run:
           name: Run Tests
           command: yarn test
-  build:
-    docker:
-      - image: circleci/node:10
-    steps:
-      # Get code from git
-      - checkout
-      # Make sure we are up to date with the package.json dependencies
-      - run: yarn install
-      # Run some tests
-      - run:
-          name: Run App
-          command: yarn start
   deploy:
     docker:
       - image: circleci/node:10
@@ -44,12 +32,11 @@ workflows:
   build-deploy:
     jobs:
       - test-unit
-      - build
       - deploy:
-        # only run deploy-via-git job if the test-unit & build job has completed
+        # only run deploy-via-git job if the test-unit job has completed
           requires:
             - test-unit
-            - build
           filters:
+            # only run deploy-via-git job on main branch
             branches:
-              only: main # only run deploy-via-git job on main branch
+              only: main
